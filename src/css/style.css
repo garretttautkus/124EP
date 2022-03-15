@@ -1,0 +1,234 @@
+/* style.cs: BYU IT&C 210a Boilerplate Stylesheet */
+
+/* We use the Material Icons font in some of the styles. This brings in
+the corresponding fonts from Google Fonts. */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/* The root rule is the foundation for the whole page. These settings _cascade_
+to all elements unless they are overridden. */
+:root {
+	/* Change these variables according to your theme */
+	--primary: #0277bd;
+	--accent: #ffffff;
+	--delete: #004c8c;
+	--primary-text: #ffffff;
+	--alt-text: #0277bd;
+
+	/* Window background and default font */
+    background-color: var(--primary-text);
+	background-image: url("https://logodix.com/logo/322620.jpg");
+	background-attachment: fixed;
+	background-position: -26em;
+    font-family:  'Roboto Mono', monospace;
+}
+
+/* These rules with element selectors apply to all elements of the corresonding names. In a sense, they
+are automatically applied */
+
+body {
+    max-width: 55rem;			  /* Keeps the page from overflowing on wide monitors */
+    margin: 0.5em auto;		      /* 0.5em is top and bottom margin. 'auto' for left and right centers the body on the page */
+    border: 1px solid var(--accent);	/* Surround the content with a solid black border */
+    border-radius: 5px;			  /* Round the corners of the body section */
+    padding: 0.75rem;			  /* Padding goes between the borders and the internal content */
+    background-color: var(--primary);	/* Contrast the body background from the page background */
+	color: var(--primary-text);
+}
+
+h1 {
+	font-family: 'Roboto Mono', monospace;
+	font-weight: bolder;
+	color: var(--primary-text);
+}
+
+nav {
+    color: var(--alt-text);				/* Nav bar is white on very dark gray */
+	font-weight: bolder;
+    background-color: var(--accent);
+    padding: .75rem;			  /* Give the nav bar some internal padding */
+}
+
+nav a {
+    color: var(--alt-text);		/* Links in the nav bar are light blue instead of white */
+    text-decoration: none;	  /* Don't underline links in the nav bar */
+
+}
+
+img {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	width: 868px;
+  }  
+
+/* These with class selectors take effect when you apply the corresponding class name on an element */
+
+.tasklist {
+	padding-left: 0;		/* Remove padding that <ul> has by default */
+	list-style-type: none;	/* No bullets in the list */
+	color: var(--primary-text);
+}
+
+.task {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	color: var(--primary-text);
+}
+
+.task-done {
+	display: inline-block;
+	box-sizing: border-box;
+	color: var(--accent);
+	/* Add property to change checkbox icon color */
+}
+
+.checked-task {
+	text-decoration: line-through;
+	color: var(--accent);
+}
+
+.unchecked-task {
+	color: var(--primary-text);
+}
+
+.task-description {
+	display: inline-block;
+	width: calc(100% - 12em);
+	box-sizing: border-box;
+	/*color: var(--primary-text);*/
+}
+
+.task-date {
+	display: inline-block;
+	width: 8em;
+	color: var(--primary-text);
+}
+
+.task-delete {
+	position: relative;
+	left: 97%;
+	bottom: 1.1em;
+	display: inline-block;
+	box-sizing: border-box;
+	color: var(--accent);
+	/* Add property to change delete icon color */
+}
+
+.material-icon {
+	border: none; /* No border */
+	background: none; /* Match the background of the parent */
+	font-family: 'Material Icons'; /* Use the icon font */
+	font-size: inherit; /* Input doesn't automatically inherit font size. This brings it in. */
+	cursor: pointer; /* Change the cursor to a pointer when hovering on this element */
+}
+
+/* Add your custom class rules here */
+
+.example {
+	color: var(--primary-text);
+}
+
+/* Add rule for: */
+/* "Create Task" button border, background, and text */
+
+/* ===== checkbox-icon =============== */
+/* These three rules apply the checkbox icon from the Material Icons font to a checkbox */
+
+input.checkbox-icon {
+	font-family: 'Material Icons';
+    font-size: inherit;  /* Input doesn't automatically inherit font size. This brings it in. */
+	appearance: none;    /* Hide the existing checkbox so that the new rendering will overlay it */
+	cursor: pointer;     /* Change the cursor to a pointer when hovering on this element */
+}
+
+input.checkbox-icon:before {
+	content: 'check_box_outline_blank';
+}
+
+input.checkbox-icon:checked:before {
+	content: 'check_box';
+	background-color: var(--accent);
+	color:var(--primary-text);
+}
+
+/* ===== toggle-switch =============== */
+/* This is pretty advanced CSS and is intended to be ready-to-use. Just
+ * set an input of type checkbox to class 'toggle-switch' to make the
+ * control look like a switch instead of a checkbox.
+ * Example:
+ *     <input type='checkbox' name='cb1' class='toggle-switch'/><label for='cb1'>Lights</label>
+ *
+ * Adapted from: https://codeconvey.com/convert-checkbox-to-toggle-button-css/
+ * with important adjustments to make it senstive to the local font size.
+ * and the addition of comments.
+ */
+
+/* Toggle Switch */
+input.toggle-switch {
+	vertical-align: middle;
+    font-size: 1em;      /* Input doesn't automatically inherit font size. This brings it in. */
+	appearance: none;    /* Hide the existing checkbox so that the new rendering will overlay it */
+	position: relative;  /* Relative positioning holds this elements space and lets :before and :after pseudo-elements position relative to this */
+	cursor: pointer;     /* Change the cursor to a pointer when hovering on this element */
+	margin: 0em 0.2em;   /* No top and bottom margin. Make space to the left and right. Use 'em' units to keep space relative to local font size */
+    width: 1.4em; 		 /* Set the element width and height relative to the font size. */
+    height: 0.8em;
+}
+
+/* Use the :after pseudo-element to create an oval as the surface of the button. */
+input.toggle-switch:after {
+    vertical-align: middle;	/* Center this vertically */
+	content: '';            /* Empty text content. But still required to establish the element */
+	display: inline-block;  /* Inline-block makes it take up rectangular space */
+    position: absolute;	    /* Absolute positioning without left and top locates this exactly on top of the input.toggle-switch */
+	width: 1.4em;           /* Width and height of the oval */
+	height: 0.6em;
+	background-color: rgb(128,128,128); /* Light gray fill */
+	border-radius: 0.3em;   /* Border radius of half the height makes this an oval instead of a rectangle */
+}
+
+/* Use the :before pseudo-element to create a circle as the toggle handle */
+input.toggle-switch:before {
+    vertical-align: middle; /* Center this vertically thereby aligning to the background oval */
+	content: '';            /* Empty text content required to take up any space */
+	display: inline-block;  /* Inline-block makes it take up rectangular space */
+	position: absolute;		/* Absolute positioning without x and y locates this on top of the input.toggle-switch */
+	width: 0.7em;           /* Width and height are the same making it take up a square space which will be round with the border-radius */
+	height: 0.7em;
+    z-index: 1;				/* Z-index of 1 positions this on top of the input.toggle-switch:after */
+	left: 0;                /* Position at the left edge of the parent checkbox (it will shift right when activated) */
+	top: -0.1em;            /* Center it vertically on the background oval - tweaked to position just right */
+	border: 1px solid rgb(128,128,128); /* border is the same color as the background oval */
+	border-radius: 0.6em;   /* Radious greater than 1/2 the height/width makes a circle */
+	background-color: white;  /* Fill with white */
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Cast a shadow on the background */
+	transition-duration: 0.3s; /* Animate turning on or off over 0.3 seconds */
+}
+
+/* Shift the handle to the right when turned on */
+input.toggle-switch:checked:before {
+	left: 0.7em;            /* When turned on, shift to the right */
+	box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.6); /* When turned on, cast the shadow the other direction */
+}
+
+/* Change the background color to green when turned on */
+input.toggle-switch:checked:after {
+	background-color: var(--accent);
+}
+
+/* Adjust form input width */
+.form-description {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Make Create Task Button Pretty */
+.form-button {
+	color:var(--delete);
+	background-color: var(--accent);
+	font-weight: bolder;
+	border: 2px var(--accent);
+	border-radius:12px;
+}
+

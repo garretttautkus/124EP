@@ -1,0 +1,33 @@
+
+    <input id="i1">
+    <input id="i2" type="date">
+    <input id="i3" type="number">
+    <script>
+    i1.addEventListener('keyup', () => {
+      console.log('text keyup: ' + i1.value)
+    })
+    i1.addEventListener('input', () => {
+      console.log('text input: ' + i1.value)
+    })
+    i1.addEventListener('change', () => {
+      console.log('text change: ' + i1.value)
+    })
+    i2.addEventListener('keyup', () => {
+      console.log('date keyup: ' + i2.value)
+    })
+    i2.addEventListener('input', () => {
+      console.log('date input: ' + i2.value)
+    })
+    i2.addEventListener('change', () => {
+      console.log('date change: ' + i2.value)
+    })
+    i3.addEventListener('keyup', () => {
+      console.log('number keyup: ' + i3.value)
+    })
+    i3.addEventListener('input', () => {
+      console.log('number input: ' + i3.value)
+    })
+    i3.addEventListener('change', () => {
+      console.log('number change: ' + i3.value)
+    })
+    </script>

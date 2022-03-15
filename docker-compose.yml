@@ -1,0 +1,7 @@
+web:
+    image: httpd
+    container_name: it210_lab_1_apache
+    ports:
+        - 80:80
+    volumes:
+        - ./src:/usr/local/apache2/htdocs
